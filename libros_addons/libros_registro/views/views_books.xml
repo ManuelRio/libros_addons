@@ -1,0 +1,41 @@
+<odoo>
+
+    <record id= "view_tree_data" model="ir.ui.view">
+        <field name="name">view.tree.data</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="author_id"/>
+                <field name="date_e"/>
+                <field name="quan_e"/>
+                <field name="state"/>
+                <field name="belongs"/>
+                <field name="series"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id= "view_form_data" model="ir.ui.view">
+        <field name="name">view.form.data</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="author_id" required="1"/>
+                        <field name="date_e" required="1"/>
+                        <field name="quan_e" required="1"/>
+                        <field name="state" required="1"/> 
+                        <field name="belongs" required="1"/>
+                        <field name="series" attrs="{'invisible':[('belongs','=',False)], 'required':[('belongs','=',True)]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_library" name="Library" parent="" action="action_view_data"/>
+    <menuitem id="menu_data" name="Data" parent="menu_library" action="action_view_data" sequence="1"/>
+</odoo>
