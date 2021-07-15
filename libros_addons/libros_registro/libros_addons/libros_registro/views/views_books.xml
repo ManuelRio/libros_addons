@@ -1,0 +1,87 @@
+<odoo>
+
+    <record id= "view_tree_data" model="ir.ui.view">
+        <field name="name">view.tree.data</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="author_id"/>
+                <field name="date_e"/>
+                <field name="quan_e"/>
+                <field name="status"/>
+                <field name="belongs"/>
+                <field name="series"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id= "view_form_data" model="ir.ui.view">
+        <field name="name">view.form.data</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="available,not available"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Data"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="author_id" required="1"/>
+                        <field name="date_e" required="1"/>
+                        <field name="quan_e" required="1"/>
+                        <field name="status" required="1"/> 
+                        <field name="belongs" required="1"/>
+                        <field name="series" attrs="{'invisible':[('belongs','=',False)], 'required':[('belongs','=',True)]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id= "view_kanban_data" model="ir.ui.view">
+        <field name="name">view.kanban.data</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="author_id"/>
+                <field name="date_e"/>
+                <field name="quan_e"/>
+                <field name="status"/>
+                <field name="series"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_image">
+                            <img t-att-src="kanban_image('libro.registro','cover',record.id.raw_value)"/>
+                        </div>
+                        <div class="oe_kanban_details">
+                            <strong class="o_kanban_record">
+                                <field name="name"/>
+                            </strong> 
+                        <div class="o_kanban_tags_section"/>
+                            <ul>
+                                <li>Book's name:<field name="name"/></li>
+                                <li>Author's name:<field name="author_id"/></li>
+                                <li>Realese date:<field name="date_e"/></li>
+                                <li>Quantity in stock:<field name="quan_e"/></li>
+                                <li>State:<field name="status"/></li>
+                                <li>Collection's name:<field name="series"/></li>
+                                
+                            </ul>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <menuitem id="menu_library" name="Library" parent="" action="action_view_data"/>
+    <menuitem id="menu_data" name="Data" parent="menu_library" action="action_view_data" sequence="1"/>
+</odoo>

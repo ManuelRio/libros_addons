@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_form_data_extend" model="ir.ui.view">
+        <field name="name">view.form.data.inherit</field>
+        <field name="model">library.data</field>
+        <field name="inherit_id" ref="libros_registro.view_form_data"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='series']" position="after">
+                <field name="cover" widget= "image" class="oe_avatar"/>
+                <field name="score"/>
+            </xpath>    
+        </field>
+    </record>
+
+    <record id="view_kanban_data_extend" model="ir.ui.view">
+        <field name="name">view.kanban.data.inherit</field>
+        <field name="model">library.data</field>
+        <field name="inherit_id" ref="libros_registro.view_kanban_data"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='series']" position="after">
+                <field name="cover"/>
+                <field name="score"/>
+            </xpath>    
+        </field>
+    </record>
+</odoo>
