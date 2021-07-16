@@ -1,0 +1,75 @@
+<odoo>
+ <report 
+        id="authors_report" 
+        model="library.author" 
+        string="Authors" 
+        report_type="qweb-pdf"
+        name="libros_registro.authors" 
+        file="libros_registro.authors" 
+    />
+    <template id="layout_authors">
+        <div class="header">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <b style="font-size:12px;"> <t t-esc="o.name"/>'s book </b>
+                </div>
+            </div> 
+        </div>
+        <div class="article o_report_layout_standard">
+            <t t-raw="0"/>
+        </div>
+        <div class="footer">
+            <div class="text-center" style="border-top: 1px solid black;">   
+            
+            </div>   
+        </div>
+    </template>
+    <template id="authors">
+         <t t-call="web.html_container">
+             <t t-foreach="docs" t-as="o">
+                <t t-call="libros_registro.layout_authors">
+                    <div class="page">
+                        <table style="width: 100%;">
+                            <colgroup>
+                                <col span="1" style="width: 20%;"/>
+                                <col span="1" style="width: 20%;"/>
+                                <col span="1" style="width: 20%;"/>
+                                <col span="1" style="width: 20%;"/>
+                                <col span="1" style="width: 20%;"/>
+                            </colgroup>
+                            <thead>
+                                <b><th class="text-center">Boook's name</th></b>
+                                <b><th class="text-center">Realese date</th></b>
+                                <b><th class="text-center">Quantity in stock</th></b>
+                                <b><th class="text-center">State</th></b>
+                                <b><th class="text-center">Series</th></b>
+                            </thead>
+
+                            <tbody>
+                                <t t-foreach="o.books_ids" t-as="item">
+                                    <tr>
+                                        <td class="text-center" style="font-size:12px;">
+                                            <t t-esc="item.name"/>
+                                        </td>
+                                        <td class="text-center" style="font-size:12px;">
+                                            <t t-esc="item.date_e"/>
+                                        </td>
+                                        <td class="text-center" style="font-size:12px;">
+                                            <t t-esc="item.quan_e"/>
+                                        </td>
+                                        <td class="text-center" style="font-size:12px;">
+                                            <t t-esc="item.status"/>
+                                        </td>
+                                        <td class="text-center" style="font-size:12px;">
+                                            <t t-esc="item.series"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>    
+    </template>
+</odoo>

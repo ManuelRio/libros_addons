@@ -4,6 +4,8 @@
     "data":[
         'views/views_books.xml',
         'views/views_authors.xml',
+        'views/report_authors.xml',
+        'report/report.xml',
         'security/security.xml'
     ]
 }
