@@ -82,6 +82,12 @@
         </field>
     </record>
 
+    <record id="action_view_data" model="ir.actions.act_window">
+     <field name="name">Books</field>    
+     <field name="res_model">library.data</field>
+     <field name="view_mode">kanban,tree,form</field>
+    </record>
+
     <menuitem id="menu_library" name="Library" parent="" action="action_view_data"/>
     <menuitem id="menu_data" name="Data" parent="menu_library" action="action_view_data" sequence="1"/>
 </odoo>

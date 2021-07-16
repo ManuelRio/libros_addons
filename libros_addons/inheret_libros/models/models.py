@@ -11,9 +11,8 @@ class Extension(models.Model):
         if self.quan_e==0:
             self.status="not available"
 
-    @api.onchange('series')
+    @api.onchange('belongs')
     def _onchage_series(self):
-        self.belongs==False
         self.series=""
 
 
